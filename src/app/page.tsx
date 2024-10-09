@@ -1,95 +1,85 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+
+import React from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+
+const data = [
+  {
+    name: "9:00",
+    Amazon: 4000,
+    Tesla: 2400,
+    Pepsi: 2400,
+    Nestle: 2100,
+  },
+  {
+    name: "10:00",
+    Amazon: 3000,
+    Tesla: 1398,
+    Pepsi: 2210,
+    Nestle: 5633,
+  },
+  {
+    name: "11:00",
+    Amazon: 2000,
+    Tesla: 9800,
+    Pepsi: 2290,
+    Nestle: 4856,
+  },
+  {
+    name: "12:00",
+    Amazon: 2780,
+    Tesla: 3908,
+    Pepsi: 2000,
+    Nestle: 3450,
+  },
+  {
+    name: "13:00",
+    Amazon: 1890,
+    Tesla: 4800,
+    Pepsi: 2181,
+    Nestle: 2100,
+  },
+  {
+    name: "14:00",
+    Amazon: 2390,
+    Tesla: 3800,
+    Pepsi: 2500,
+    Nestle: 2100,
+  },
+  {
+    name: "15:00",
+    Amazon: 3490,
+    Tesla: 4300,
+    Pepsi: 2100,
+    Nestle: 3000,
+  },
+];
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <LineChart width={500} height={300} data={data}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Line
+        type="monotone"
+        dataKey="Amazon"
+        stroke="#d9430d"
+        activeDot={{ r: 8 }}
+      />
+      <Line type="monotone" dataKey="Tesla" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="Pepsi" stroke="#1224c7" />
+      <Line type="monotone" dataKey="Nestle" stroke="#285fd4" />
+    </LineChart>
   );
 }
