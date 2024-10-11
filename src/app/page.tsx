@@ -1,10 +1,11 @@
 
-import MyChart from "./grafico2";
+import LineChart from "./Line";
+
 
 export default function Home() {
   return (
     <div>
-      <MyChart/>
+      <LineChart/>
     </div>
   );
 }

@@ -9,7 +9,7 @@ interface Datum {
   secondary: number;
 }
 
-const MyChart = (): ReactElement => {
+const LineChart = (): ReactElement => {
   // Datos del gráfico
   const data = useMemo(
     () => [
@@ -83,4 +83,4 @@ const MyChart = (): ReactElement => {
   );
 };
 
-export default MyChart;
+export default LineChart;
