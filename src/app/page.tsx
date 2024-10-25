@@ -1,29 +1,35 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { Chart } from "react-google-charts";
 import styles from "./page.module.css";
+import DateMomentUtils from './utils/DateMomentUtils';
+
 
 export default function Home() {
 
+  const registros = DateMomentUtils.getRegistrosEntreFechas(
+    { fecha: '2024-10-01', hora: '00:00' },
+    { fecha: '2024-11-01', hora: '15:00' },
+  );
+
+  console.log(registros);
+
   //LINE CHART
-  const dataLine = [
-    ["Años", "Amazon", "Mercado libre", "Ebay"],
-    ["2014", 1050, 560, 1000],
-    ["2015", 860, 1090, 800],
-    ["2016", 1070, 740, 600],
-    ["2017", 1110, 660, 800],
-    ["2018", 1040, 620, 1000],
-    ["2019", 1020, 710, 100],
-    ["2020", 920, 1220, 1000],
-    ["2021", 1120, 850, 700],
-    ["2022", 1080, 810, 892],
-    ["2023", 1120, 820, 1000],
+  const dataLineHora = [
+    ["hora", "NVIDIA", "AMD", "INTEL"],
+    ...registros.map((registro) => [
+      registro.hora,
+      registro.cotizaciones.find((c: { empresa: string; }) => c.empresa === 'NVIDIA')?.valorAccion || 0,
+      registro.cotizaciones.find((c: { empresa: string; }) => c.empresa === 'AMD')?.valorAccion || 0,
+      registro.cotizaciones.find((c: { empresa: string; }) => c.empresa === 'INTEL')?.valorAccion || 0
+    ])
   ];
+
 
   const optionsLine = {
     chart: {
-      title: "E-Stores",
-      subtitle: "Tiendas con envios, por millon de dolares",
+      title: "Empresas de tecnologia",
+      subtitle: "Valor de las acciones",
     },
     width: 950,
     height: 500,
@@ -66,12 +72,19 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+
+      <div>
+    <button>Día</button>
+    <button>Mes</button>
+    <button>Año</button>
+  </div>
         <Chart
           chartType="Line"
-          data={dataLine}
+          data={dataLineHora}
           options={optionsLine}
         />
         <br></br>
+
 
 <h1>{dataPie[0][0]},{dataPie[0][1]} </h1>
         <Chart
