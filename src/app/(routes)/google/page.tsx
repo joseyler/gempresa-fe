@@ -1,7 +1,7 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import { Chart } from "react-google-charts";
-import styles from "./page.module.css";
+import styles from "../../page.module.css";
 import DateMomentUtils from '../../utils/DateMomentUtils';
 
 
@@ -9,7 +9,7 @@ export default function Home() {
 
   const registros = DateMomentUtils.getRegistrosEntreFechas(
     { fecha: '2024-10-01', hora: '00:00' },
-    { fecha: '2024-11-01', hora: '15:00' },
+    { fecha: '2024-10-02', hora: '15:00' },
   );
 
   console.log(registros);

@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface RegistroCotizacion {
-  cotizaciones: any;
+  cotizaciones: any[];
   fecha: string;
   hora: string;
   codigoEmpresa: string;

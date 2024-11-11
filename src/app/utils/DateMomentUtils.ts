@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import momentTZ from 'moment-timezone';
 import { RegistroCotizacion } from '../model/registro.cotizacion';
 import { RegistroFecha } from '../model/registro.fecha';
@@ -135,7 +136,7 @@ class DateMomentUtils {
             hora: registro.hora,
             codigoEmpresa: '',
             valorAccion: 0,
-            cotizaciones: 0,
+            cotizaciones: [],
           },
           horarios.horaDesde,
           horarios.horaHasta
